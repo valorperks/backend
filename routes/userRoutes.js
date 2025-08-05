@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const User = require('../models/User');
 
 // Signup
 router.post('/signup', async (req, res) => {
@@ -25,7 +25,7 @@ router.post('/add-card', async (req, res) => {
   const { userId, cardNumber, expiryMonth, cvv, cardholder } = req.body;
 
   console.log('Received user registration data:', req.body);
-  
+
   try {
     await User.findByIdAndUpdate(userId, {
       card: { cardNumber, expiryMonth, cvv, cardholder }
